@@ -5,13 +5,13 @@ from airflow.decorators import task
 from airflow.operators.postgres import PostgresOperator
 from scripts.python.download_file import download_pageviews, fetch_page
 
-datasource_url = "https://dumps.wikimedia.org/other/pageviews/2024/2024-10/pageviews-20241001-000000.gz"
+datasource_url = "https://dumps.wikimedia.org/other/pageviews/2024/2024-10/pageviews-20241010-160000.gz"
 downloads_folder = os.path.expanduser("~/projects/cde/airflow/airflowcde/dags/core_sentiment/pageviews")
 output_sql_file = '/opt/airflow/dags/core_sentiment/scripts/sql/insert_data.sql'
 
 with DAG(
     dag_id="pageview",
-    start_date=datetime(2024, 10, 1),
+    start_date=datetime(2024, 10, 10),
     schedule_interval=None,
     catchup=False
 ) as dag:
