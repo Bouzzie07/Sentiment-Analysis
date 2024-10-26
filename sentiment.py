@@ -7,7 +7,7 @@ from scripts.python.download_file import download_pageviews, fetch_page
 
 datasource_url = "https://dumps.wikimedia.org/other/pageviews/2024/2024-10/pageviews-20241010-160000.gz"
 downloads_folder = os.path.expanduser("~/projects/cde/airflow/airflowcde/dags/core_sentiment/pageviews")
-output_sql_file = '/opt/airflow/dags/core_sentiment/scripts/sql/insert_data.sql'
+output_sql_file = os.path.expanduser("~/projects/cde/airflow/airflowcde/dags/core_sentiment/scripts/sql/insert_data.sql'
 
 with DAG(
     dag_id="pageview",
@@ -20,7 +20,7 @@ with DAG(
     create_table = PostgresOperator(
         task_id='create_table',
         postgres_conn_id='your_postgres_conn_id',  # Replace with your connection ID
-        sql=open('/opt/airflow/dags/sql/create_table.sql', 'r').read(),
+        sql=open('~/projects/cde/airflow/airflowcde/dags/core_sentiment/scripts/sql/create_table.sql', 'r').read(),
     )
 
     @task
